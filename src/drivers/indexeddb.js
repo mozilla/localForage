@@ -662,6 +662,10 @@ function setItem(key, value, callback) {
                                 value = null;
                             }
 
+                            if (_isEncodedBlob(value)) {
+                                value = _decodeBlob(value);
+                            }
+
                             resolve(value);
                         };
                         transaction.onabort = transaction.onerror = function() {
